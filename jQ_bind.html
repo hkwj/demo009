@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+<style>
+div{width: 100px; height:100px; border:1px solid red;}
+.over{background:red;}
+
+</style>
+</head>
+<body>
+	<div class=""></div>
+<script src="work/jquery-2.0.3.js"></script>
+<script>
+$(function(){
+	$('div').bind('mouseover mouseout',function(){
+		$(this).toggleClass('over');
+	})
+})
+</script>
+</body>
+</html> 
