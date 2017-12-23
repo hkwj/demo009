@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>test</title>
+<style>
+input{
+	background:#ccc;
+}
+input.active{
+	background:red;
+}
+div{
+	width:200px; height:100px;
+	display:none;
+}
+div.cur{
+	display:block;
+}
+#div1,#div2{
+	display:block;
+}
+
+
+
+	
+
+</style>
+
+</head>
+<body>
+<div id="div1">
+	<input type="button" value="aaa" class="active">
+	<input type="button" value="bbb">
+	<input type="button" value="ccc">
+	<div style="display:block;">aaa</div>
+	<div>bbb</div>
+	<div>ccc</div>
+</div>
+
+<hr>
+
+<div id="div2">
+	<input type="button" value="aaa" class="active">
+	<input type="button" value="bbb">
+	<input type="button" value="ccc">
+	<div style="display:block;">aaa</div>
+	<div>bbb</div>
+	<div>ccc</div>
+</div>
+
+
+
+<script src="work/jquery-2.0.3.js"></script>
+
+<script>
+
+function Tab(id){
+	this.wrap = document.getElementById(id);
+	this.head = this.wrap.getElementsByTagName('input');
+	this.body = this.wrap.getElementsByTagName('div');
+
+	var _this = this;
+	for(var i=0; i<this.head.length; i++){
+		this.head[i].index = i;
+		this.head[i].onclick = function(){
+			for(var i=0; i<_this.head.length; i++){
+				_this.head[i].className = '';
+				_this.body[i].style.display = 'none';
+			};
+			_this.head[this.index].className= 'active';
+			_this.body[this.index].style.display = 'block';
+		};
+	}
+};
+
+
+new Tab('div1');
+
+function Tab1(id){
+	this.wrap = document.getElementById(id);
+	this.head = this.wrap.getElementsByTagName('input');
+	this.body = this.wrap.getElementsByTagName('div');
+
+	var _this = this;
+	for(var i=0; i<this.head.length; i++){
+		this.head[i].index = i;
+		this.head[i].onclick = function(){
+			_this.fnClick(this.index);
+		}
+	}
+};
+
+Tab1.prototype.fnClick = function(index){
+	for(var i=0; i<this.head.length; i++){
+		this.head[i].className = '';
+		this.body[i].style.display = 'none';
+	};
+	this.head[index].className = 'active';
+	this.body[index].style.display = 'block';
+
+};
+
+new Tab1('div2');
+
+
+
+
+
+
+</script>
+</body>
+</html>
