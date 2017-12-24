@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>test</title>
+<style>
+input{
+	background:#ccc;
+}
+input.active{
+	background:red;
+}
+div{
+	width:200px; height:100px;
+	display:none;
+}
+div.cur{
+	display:block;
+}
+#div1,#div2{
+	display:block;
+}
+
+
+
+	
+
+</style>
+
+</head>
+<body>
+
+
+<div id="div1"></div>
+
+
+<script src="work/jquery-2.0.3.js"></script>
+
+<script>
+
+
+var show = function(){};
+var a = new show();
+
+alert(a instanceof show);  //true
+alert(a instanceof Object); //true
+alert(a instanceof Function); //false
+// 47 看不懂
+alert(show instanceof Function); // true
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
