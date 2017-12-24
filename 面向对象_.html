@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>test</title>
+<style>
+	
+
+</style>
+
+</head>
+<body>
+
+
+
+<script src="work/jquery-2.0.3.js"></script>
+<script>
+function Person(name,age){
+	this.name = name;
+	this.age = age;
+}
+Person.prototype.showName = function(){
+	alert(this.name);
+}
+Person.prototype.showAge = function(){
+	alert(this.age);
+}
+
+function Worker(name,age,job){
+	Person.apply(this,arguments);
+	this.job = job;
+}
+// Worker.prototype = Person.prototype;
+// for(var key in Person.prototype){
+// 	Worker.prototype[key] = Person.prototype[key];
+// }
+
+Worker.prototype = new Person();
+Worker.prototype.constructor = Worker;
+
+Worker.prototype.showJob = function(){
+	alert(this.job);
+};
+
+var p1 = new Person('alex',11);
+var w1 = new Worker('blue',33,'sdjdsklfjsdfsd');
+
+
+// alert(w1 instanceof Person);//讲道理应该是true
+// alert(w1.constructor == Worker);
+// console.log(w1);
+
+var arr = [];
+// alert(arr.constructor == Object);//false
+//alert(arr.constructor == Array);//true
+alert(Array.constructor == Object);//false	
+
+
+</script>
+</body>
+</html>
