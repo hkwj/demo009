@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+   <title></title>
+  <script src="work/echarts.js"></script>
+
+<style>
+
+
+</style>
+</head>
+<body>
+	     
+
+
+
+
+<script>
+
+var arr=[12,-8,5,99,27,-36,9,2,20,187,6];
+
+sortt(arr);
+alert(arr);
+
+function sortt(arr){
+	for(var i=0; i<arr.length; i++){
+		var minNum = 9999999999999;
+		var minNumIndex = -1;
+
+		for(var j=i; j<arr.length; j++){
+			if(arr[j]<minNum){
+				minNum = arr[j];
+				minNumIndex = j;
+			}
+		}
+
+		var tmp = arr[i];
+		arr[i] = arr[minNumIndex];
+		arr[minNumIndex] = tmp;
+	}
+}
+
+
+
+</script>
+</body>
+</html>
