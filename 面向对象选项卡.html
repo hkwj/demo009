@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+   <title></title>
+
+
+
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+#div1 input.active{background:red;}
+#div1 div{height:50px;background:red; display:none;}
+
+</style>
+</head>
+<body>
+
+
+
+<div id="div1">
+	<input type="button" value="aaa" class="active">
+	<input type="button" value="bbb">
+	<input type="button" value="ccc">
+    <div style="display:block;">aaaa</div>
+    <div>bbbb</div>
+    <div>cccc</div>
+</div>
+
+
+
+
+<script>
+
+
+function Tab(id){
+	this.oDiv = document.getElementById(id);
+	this.aIpt = this.oDiv.getElementsByTagName('input');
+	this.aDiv = this.oDiv.getElementsByTagName('div');
+
+	var _this = this;
+	for(var i=0; i<this.aIpt.length; i++){
+		this.aIpt[i].index = i;
+		this.aIpt[i].onclick = function(){
+			_this.fnClick(this.index);
+		}
+	}
+}
+
+
+Tab.prototype.fnClick = function(index){
+	for(var i=0; i<this.aIpt.length; i++){
+		this.aIpt[i].className = '';
+		this.aDiv[i].style.display = 'none';
+	}
+
+	this.aIpt[index].className = 'active';
+	this.aDiv[index].style.display = 'block';
+}
+
+
+window.onload = function(){
+	console.log(new Tab('div1'));
+}
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
