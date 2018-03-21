@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+   <title></title>
+
+
+
+<style>
+
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+#div1 input{
+	background:white;
+}
+#div1 input.active{
+	background:yellow;
+}
+#div1 div{
+	width:200px; height:200px;
+	background:#ccc; display:none;
+}
+
+</style>
+</head>
+<body>
+
+<div id="div1">
+	<input type="button" value="aaa">
+	<input type="button" value="bbb">
+	<input type="button" value="ccc">
+	<div>
+		aaaaaaa
+	</div>
+	<div>
+		bbbbbbb
+	</div>
+	<div>
+		ccccccc
+	</div>
+</div>
+
+
+
+
+<script>
+
+
+window.onload = function(){
+	new TabSwitch('div1');
+}
+
+
+function TabSwitch(id){
+	var oDiv = document.getElementById(id);
+	this.aBtn = oDiv.getElementsByTagName('input');
+	this.aDiv = oDiv.getElementsByTagName('div');
+
+	for(var i=0; i<this.aBtn.length; i++){
+		this.aBtn[i].index = i;
+		var _this = this;
+		this.aBtn[i].onclick = function(){
+			_this.fnClick(this.index);
+		}
+	}
+}
+
+
+ TabSwitch.prototype.fnClick = function(k){
+	for(var i=0; i<this.aBtn.length; i++){
+
+		this.aBtn[i].className = '';
+		this.aDiv[i].style.display = 'none';
+	}
+	this.aBtn[k].className = 'active';
+	this.aDiv[k].style.display = 'block';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
