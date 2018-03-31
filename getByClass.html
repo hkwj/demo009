@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<style>
+
+</style>
+
+</head>
+<body>
+
+
+<div class="a box xxxx">box</div>
+<div class="">空</div>
+<div class="box">box</div>
+<div class="">空</div>
+
+
+
+<script>
+
+var aBox = getByClass(document,'box');
+
+for(var i=0; i<aBox.length; i++){
+    aBox[i].style.background = 'red';
+}
+
+
+function getByClass(oParent,sClass){
+    var aEle = oParent.getElementsByTagName('*');
+    var result = [];
+    for(var i=0; i<aEle.length; i++){
+        var tmpArr = aEle[i].className.split(' ');
+        for(var j=0; j<tmpArr.length; j++){
+            if(tmpArr[j] == sClass){
+                result.push(aEle[i]);
+            }
+        }
+    }
+    return result;
+}
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
