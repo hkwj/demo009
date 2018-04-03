@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+   <title></title>
+
+
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+
+
+<script>
+	function jsonp(options){
+		options = options || {};
+		if(!options.url) return;
+		if(!options.data) return;
+		options.cbKey = options.cbKey || 'cb';
+		options.timeout = options.timeout || 0;
+		options.success = options.success || null;
+		options.error = options.error || null;
+
+		var cbValue = 'jsonp'+Math.random();
+		options.data[options.cbKey] = cbValue.replace('.','');
+
+		window[options.data[options.cbKey]] = function(json){
+			options.success && options.success(json);
+			clearTimeout(timer);
+
+			document.getElementsByTagName('head')[0].removeChild(oSc);
+			window[options.data[options.cbKey]] = null;
+		};
+
+		var arr = [];
+		for(var key in options.data){
+			arr.push(key +'='+ encodeURIComponent(options.data[key]) );
+		};
+
+		options.url = options.url + '?' + arr.join('&');
+
+		var oSc = document.createElement('script');
+		oSc.src = options.url;
+		document.getElementsByTagName('head')[0].appendChild(oSc);
+
+		if(options.timeout){
+			var timer = setTimeout(function(){
+				options.error && options.error();
+				window[options.data[options.cbKey]] = function(){};
+			},options.timeout);
+		}
+
+	}
+	
+
+
+
+</script>
+
+
+<script>
+jsonp({
+	url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+	data:	{wd:'迅雷'},
+	success: function(json){
+		alert(json.s);
+	},
+	error: function(){
+		alert('overTime');
+	},
+	timeout: 1000,
+	cbKey: 'cb'	
+})
+
+
+
+
+</script>
+
+
+</body>
+</html>
