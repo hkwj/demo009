@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+   <title></title>
+
+
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+
+
+<script src="work/jquery-2.0.3.js"></script>
+
+
+<script>
+
+function show(json){
+	alert(json.s);
+};
+
+jsonp(
+	'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=迅雷&cb=show'
+);
+
+function jsonp(url){
+	var oSc = document.createElement('script');
+	oSc.src = url;
+	document.getElementsByTagName('head')[0].appendChild(oSc);
+}
+
+
+
+
+</script>
+
+
+</body>
+</html>
