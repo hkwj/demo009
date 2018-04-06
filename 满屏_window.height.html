@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<style>
+*{
+	margin:0; padding:0; list-style:none;
+}
+.active{
+	color:red;
+}
+ol{
+	position:fixed;
+	left:30px;
+	top:50%;
+}
+ol li.active{
+	color:red;
+}
+</style>
+
+</head>
+<body>
+
+<ol>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+</ol>
+
+
+<ul>
+	<li style="background:#ccc;"></li>
+	<li style="background:#ddd;"></li>
+	<li style="background:#fff;"></li>
+	<li style="background:#eee;"></li>
+</ul>
+
+
+
+<script src="work/jquery-2.0.3.js"></script>
+
+<script>
+
+$('ul li').css('height',$(window).height());
+
+$(window).scroll(function(){
+	var n = parseInt($(window).scrollTop()/$(window).height());
+	$('ol li').eq(n).addClass('active').siblings().removeClass('active');
+})
+
+
+
+
+</script>
+</body>
+</html>
